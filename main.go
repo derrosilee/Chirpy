@@ -10,7 +10,7 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	mux.Handle("/", http.FileServer(http.Dir("public")))
+	mux.Handle("/", http.FileServer(http.Dir(".")))
 
 	corsMux := middlewareCors(mux)
 
