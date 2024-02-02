@@ -10,7 +10,11 @@ func main() {
 
 	mux := http.NewServeMux()
 
+	// serve files from the current directory
 	mux.Handle("/", http.FileServer(http.Dir(".")))
+
+	// serve files from the assets directory on the /assets path
+	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 
 	corsMux := middlewareCors(mux)
 
